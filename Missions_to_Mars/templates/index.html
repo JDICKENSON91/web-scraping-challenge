@@ -31,16 +31,17 @@
         <h2 class="w3-myfont" style="font-size:16pt; color:#000000"> {{ mars.news_p }}</h2>
     </div>
     </div>
+    <div class="dropdown-divider"></div>
 </div>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col" style= "padding-top: 0.2cm; padding-left:0.5cm;">
         <h2 class="w3-myfont" style="font-size:20pt; color:#000000"> Featured Mars Image</h2>
-        <img style="height: 10cm" src="{{ mars.featured_image_url }}" alt="Featured Image">
+        <img style="height: 10cm;" src="{{ mars.featured_image_url }}" alt="Featured Image">
         </div>
         <div class="col" style= "padding-top: 0.2cm; padding-left:0.5cm;">
         <h2 class="w3-myfont" style="font-size:20pt; color:#000000"> Mars Facts</h2>
-        <h4> {{ mars.fact_table | safe  }}  </h4>   
+        <h4 style="padding-left: 1cm;" class="dataframe w3-table-all w3-hoverable" > {{ mars.fact_table | safe  }}  </h4>   
         </div>   
     </div>
 </div>
@@ -53,7 +54,7 @@
     </div>
     <div class="row">       
         {% for hemisphere in mars.hemisphere_images %} 
-          <div class="col">
+          <div class="col-md-6">
           </br>
                 <div>
                   <img width="512 px" height="512 px" src="{{ hemisphere.img_url | safe }}">
