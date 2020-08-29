@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="WebVisualizations/resources/style.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col" style= "padding-top: 0.2cm; padding-left:0.5cm;">
+        <h2 class="w3-myfont" style="font-size:28pt; color:#ff0000">Latest Mars News</h2>
+    </div>
+    </div>
+    <div class="row">
+        <div class="col" style= "padding-top: 0.2cm; padding-left:0.5cm;">
+        <h2 class="w3-myfont" style="font-size:20pt; color:#000000"> {{ mars.news_title }}</h2>
+        <h2 class="w3-myfont" style="font-size:16pt; color:#000000"> {{ mars.news_p }}</h2>
+    </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col" style= "padding-top: 0.2cm; padding-left:0.5cm;">
+        <h2 class="w3-myfont" style="font-size:20pt; color:#000000"> Featured Mars Image</h2>
+        <img style="height: 10cm" src="{{ mars.featured_image_url }}" alt="Featured Image">
+        </div>
+        <div class="col" style= "padding-top: 0.2cm; padding-left:0.5cm;">
+        <h2 class="w3-myfont" style="font-size:20pt; color:#000000"> Mars Facts</h2>
+        <h4> {{ mars.fact_table | safe  }}  </h4>   
+        </div>   
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12" style= "padding-top: 0.2cm; padding-left:0.5cm;">
+        <h2 class="w3-myfont" style="font-size:20pt; color:#000000; align-content: center;"> Mars Hemispheres</h2>
+    </div> 
+    </div>
+    <div class="row">       
+        {% for hemisphere in mars.hemisphere_images %} 
+          <div class="col">
+          </br>
+                <div>
+                  <img width="512 px" height="512 px" src="{{ hemisphere.img_url | safe }}">
+                </div>
+
+                <div>
+                  <h4> {{ hemisphere.title | safe }} </h4>  
+                </div>
+        
+          </div>
+        {% endfor %}
+</div>
+
+</body>
+
+</html>
